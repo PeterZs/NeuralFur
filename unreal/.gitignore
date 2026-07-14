@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+
+# Local data & generated outputs
+data/
+output/
+*.blend1
+
+.idea/
+.vscode/

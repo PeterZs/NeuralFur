@@ -1,0 +1,11 @@
+# Blender as a Python module (requires Python 3.11 for Blender 4.x builds).
+# Alternatively, run the src/blender scripts with Blender's bundled Python.
+bpy>=4.2,<5
+
+numpy
+trimesh
+
+# Optional: only needed for the animation step (src/blender/smal_to_fbx.py),
+# together with the SMAL model file (data/smal/smal_plus.pkl):
+# torch
+# smplx
