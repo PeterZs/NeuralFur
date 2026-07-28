@@ -1,3 +1,6 @@
 [submodule "submodules/NeuS"]
 	path = submodules/NeuS
 	url = git@github.com:Vanessik/NeuS.git
+[submodule "submodules/SMALify-neuralfur"]
+	path = submodules/SMALify-neuralfur
+	url = git@github.com:bernakabadayi/SMALify-neuralfur.git

@@ -8,7 +8,7 @@ Every script accepts `--animal` and `--root_path` flags. The `--root_path` is th
 
 - **Directional** -- to obtain tangent basis on the mesh
 - **NeuS** -- to obtain full animal geometry (included as submodule)
-- **SMAL** -- to obtain parametric animal model (SMALify)
+- **SMAL** -- to obtain parametric animal model ([SMALify-neuralfur](https://github.com/bernakabadayi/SMALify-neuralfur), included as submodule)
 
 ### Download raw data
 
@@ -78,7 +78,37 @@ python calc_orientation_maps.py \
 
 ## 5. Fit SMAL model
 
-Fit a SMAL parametric animal model to the reconstructed mesh using [SMALify](https://github.com/silviazuffi/smalify). This produces a body model with semantic vertex groups.
+Fit a SMAL parametric animal model to the reconstructed mesh using
+[`submodules/SMALify-neuralfur`](https://github.com/bernakabadayi/SMALify-neuralfur), our
+fork of [SMALify](https://github.com/benjiebob/SMALify) with a multi-stage differentiable
+fitting pipeline. This produces a body model with semantic vertex groups.
+
+Install dependencies and download the SMAL model files (`my_smpl_00781_4_all.pkl`,
+`my_smpl_data_00781_4_all.pkl`, `symIdx.pkl`) from [SMAL](http://smal.is.tue.mpg.de/) into
+`submodules/SMALify-neuralfur/data/SMALST/smpl_models/` -- see
+[`submodules/SMALify-neuralfur/README.md`](../submodules/SMALify-neuralfur/README.md) for
+full setup instructions.
+
+Then run the fitter against the Step 2 NeuS mesh (a directory of `.obj` meshes, plus a YAML
+config describing the optimization stages -- see
+`submodules/SMALify-neuralfur/fitter_3d/sample_bear/cfg.yaml` for a full example):
+
+```bash
+cd submodules/SMALify-neuralfur
+python fitter_3d/optimise.py \
+  --mesh_dir ../NeuS/exp/<scene_name>/<case>/wmask/meshes \
+  --yaml_src <path-to-config.yaml>
+```
+
+Each stage's optimized SMAL parameters are saved as `Stage<N>.npz` under the configured
+results directory. Convert the final stage back to an `.obj` mesh for the annotation
+transfer in Step 6:
+
+```bash
+python scripts/npz2obj.py --results_dir <out_dir> --stage Stage5
+```
+
+This produces `<out_dir>/Stage5.obj`.
 
 ## 6. Annotate and transfer SMAL body part annotations
 
