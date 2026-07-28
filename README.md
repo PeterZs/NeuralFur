@@ -41,9 +41,9 @@ The data directory should contain:
 - `masks/` -- segmentation masks
 - `orientations/` -- orientation maps
 
-## Preprocessing on Artemis Data [WIP]
+## Preprocessing on Artemis Data
 
-For processing raw Artemis data from scratch, see the full preprocessing guide: [preprocessing/preprocess.md](preprocessing/preprocess.md).
+For processing raw Artemis data from scratch, see the full preprocessing guide: [preprocessing/preprocess.md](preprocessing/preprocess.md). For fitting the SMAL model to the NeuS geometry, see the [`submodules/SMALify-neuralfur`](submodules/SMALify-neuralfur) submodule.
 
 ## Configuration
 
@@ -96,7 +96,7 @@ NeuralFur/
 
 - [x] Code for preprocessed scene
 - [x] [Reconstruction results](https://drive.google.com/drive/folders/1Gsqqr5wyE0ciJIbZ0EM87U_zkEVD1JgV)
-- [ ] Preprocessing pipeline for Artemis dataset (deadline: April 19, 2026)
+- [x] Preprocessing pipeline for Artemis dataset
 - [ ] Detailed guide for using obtained ply inside unreal engine
 
 
