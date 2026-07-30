@@ -97,7 +97,7 @@ NeuralFur/
 - [x] Code for preprocessed scene
 - [x] [Reconstruction results](https://drive.google.com/drive/folders/1Gsqqr5wyE0ciJIbZ0EM87U_zkEVD1JgV)
 - [x] Preprocessing pipeline for Artemis dataset
-- [ ] Detailed guide for using obtained ply inside unreal engine
+- [x] Detailed guide for using obtained ply inside unreal engine
 
 
 
